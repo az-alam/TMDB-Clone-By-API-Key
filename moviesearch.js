@@ -13,6 +13,12 @@ form.onsubmit = (e) => {
 }
 
 function displaymovie(moviedata) {
+    if (moviedata.length === 0) {
+        const error = "Not Found Please Try Again";
+        document.querySelector("#results").append(error)
+    }
+
+    else{
     const resultsdiv = document.querySelector("#results");
     resultsdiv.innerHTML = "";
 
@@ -23,7 +29,7 @@ function displaymovie(moviedata) {
         const title = document.createElement("h3");
 
         poster.src = (movie.poster_path) ? "https://image.tmdb.org/t/p/original" + movie.poster_path : "no-poster-available.jpg";
-        title.innerHTML = movie.original_title;
+        title.innerHTML = titlename(movie.original_title);
 
 
 
@@ -32,6 +38,16 @@ function displaymovie(moviedata) {
         resultsdiv.append(moviediv)
 
     })
+}
+
+function titlename(name) {
+    if (name.length > 20) {
+        return name.slice(0, 20) + "..."
+    }
+    else {
+        return name
+    }
+}
 }
 
 
@@ -45,16 +61,3 @@ function displaymovie(moviedata) {
 
 
 
-// function displaymovie(moviedata){
-//     for(let i=0; i<moviedata.length; i++){
-
-//     const head=document.createElement("h1");
-//     head.innerHTML=moviedata[i].title;
-//     document.querySelector("#results").append(head);
-
-
-//         const image=document.createElement("img");
-//         image.src="https://image.tmdb.org/t/p/original"+moviedata[i].poster_path;
-//         document.querySelector("#results").append(image);
-//     }
-// }
