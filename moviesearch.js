@@ -18,26 +18,41 @@ function displaymovie(moviedata) {
         document.querySelector("#results").append(error)
     }
 
-    else{
-    const resultsdiv = document.querySelector("#results");
-    resultsdiv.innerHTML = "";
+    else {
+        const resultsdiv = document.querySelector("#results");
+        resultsdiv.innerHTML = "";
 
-    moviedata.forEach((movie) => {
-        const moviediv = document.createElement("div");
-        moviediv.classList.add("movie");
-        const poster = document.createElement("img");
-        const title = document.createElement("h3");
+        moviedata.forEach((movie) => {
+            const moviediv = document.createElement("div");
+            moviediv.classList.add("movie");
+            const poster = document.createElement("img");
+            const title = document.createElement("h3");
 
-        poster.src = (movie.poster_path) ? "https://image.tmdb.org/t/p/original" + movie.poster_path : "no-poster-available.jpg";
-        title.innerHTML = titlename(movie.original_title);
+            poster.src = (movie.poster_path) ? "https://image.tmdb.org/t/p/original" + movie.poster_path : "no-poster-available.jpg";
+            title.innerHTML = titlename(movie.original_title);
+
+            fetch("https://api.themoviedb.org/3/movie/" + movie.id + "/video?api_key=9600d9a3bcd52f86c4f65924813b03bb&language=en-US")
+                .then((Response) => { return Response.json() })
+                .then((result) => {
+                    console.log(result.results);
+                    if (result.results.length > 0 && findtrailer(result.results)) {
+                        const trailerkey = findtrailer(result.results);
+                        const anchor = document.createElement("a");
+                        anchor.href = "https://youtube.com/embed/" + trailerkey;
+                        anchor.target = "_blank";
+                        anchor.innerHTML = "Play Trailer";
+                        moviediv.append(anchor)
+                    }
+                })
 
 
 
-        moviediv.append(poster);
-        moviediv.append(title);
-        resultsdiv.append(moviediv)
+            moviediv.append(poster);
+            moviediv.append(title);
+            resultsdiv.append(moviediv)
 
-    })
+        })
+    }
 }
 
 function titlename(name) {
@@ -48,6 +63,11 @@ function titlename(name) {
         return name
     }
 }
+
+function findtrailer(data) {
+    const videoobject = data.find((obj) => obj.site === "YouTube" && obj.type === "Trailer");
+    if (videoobject === "undefined") return false;
+    else return videoobject.key;
 }
 
 
