@@ -31,7 +31,7 @@ function displaymovie(moviedata) {
             poster.src = (movie.poster_path) ? "https://image.tmdb.org/t/p/original" + movie.poster_path : "no-poster-available.jpg";
             title.innerHTML = titlename(movie.original_title);
 
-            fetch("https://api.themoviedb.org/3/movie/" + movie.id + "/video?api_key=9600d9a3bcd52f86c4f65924813b03bb&language=en-US")
+            fetch("https://api.themoviedb.org/3/movie/" + movie.id + "/videos?api_key=9600d9a3bcd52f86c4f65924813b03bb&language=en-US")
                 .then((Response) => { return Response.json() })
                 .then((result) => {
                     console.log(result.results);

@@ -1,57 +1,98 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-header{
+
+body {
+    background-color: #4158D0;
+    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+}
+
+header {
     background-color: #4b5664;
     color: #fff;
-    padding: 0 3rem;
+    padding: 1rem 3rem;
     height: 50px;
     display: flex;
     align-items: center;
-    margin: 1rem auto;
 }
-section{
+
+section {
     padding: 1rem 3rem;
 }
-#search form{
+
+#search form {
     width: 400px;
 }
-#search form input{
+
+#search form input {
     width: 80%;
     padding: 0.5rem;
     border: 2px solid #3b5998;
     font-size: 1rem;
 }
 
-#search form button{
+#search form button {
     width: 20%;
     cursor: pointer;
     margin-top: 1rem;
     font-size: 1rem;
     padding: 0.5rem;
 }
-#results{
+
+#results {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
 }
-#results .movie{
+
+#results .movie {
     width: 200px;
     height: 200px;
     margin: 0.5rem;
     text-align: center;
-    transition: all 1s ease;
 
 }
-#results .movie img{
+
+#results .movie img {
     width: 100%;
     height: 80%;
     border-radius: 10px;
+    transition: all 1s ease;
+
 
 }
-#results .movie:hover{
-    transform: scale(1.2);
+
+#results .movie img:hover {
+    transform: scale(1.1);
+}
+
+#results .movie a {
+    text-decoration: none;
+    color: #000;
+    border-radius: 5px;
+    background-color: #FA016D;
+    padding: 0.1rem;
+    margin-top: 0.1rem;
+    display: inline-block;
+}
+
+@media screen and (max-width:450px) {
+    header {
+        width: auto;
+        padding: 1rem 3rem;
+        height: 50px;
+        display: flex;
+        align-items: center;
+    }
+
+    #search form {
+        width: auto;
+    }
+
+    #search form button {
+        width: auto;
+    }
 }
