@@ -13,13 +13,18 @@ form.onsubmit = (e) => {
 }
 
 function displaymovie(moviedata) {
+    const resultsdiv = document.querySelector("#results");
+    resultsdiv.innerHTML=""
     if (moviedata.length === 0) {
-        const error = "Not Found Please Try Again";
-        document.querySelector("#results").append(error)
+        const notfounddiv = document.createElement("div");
+        notfounddiv.classList.add("dataNotfound");
+        const notfound = document.createElement("img");
+        notfound.src = "https://www.rajasthanndaacademy.com/assets/images/no-record-found.png";
+        notfounddiv.append(notfound);
+        document.querySelector("#results").append(notfounddiv);
     }
 
     else {
-        const resultsdiv = document.querySelector("#results");
         resultsdiv.innerHTML = "";
 
         moviedata.forEach((movie) => {

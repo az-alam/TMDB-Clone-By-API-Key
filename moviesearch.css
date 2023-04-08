@@ -7,6 +7,7 @@
 body {
     background-color: #4158D0;
     background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    height: 100vh;
 }
 
 header {
@@ -29,9 +30,12 @@ section {
 #search form input {
     width: 80%;
     padding: 0.5rem;
-    border: 2px solid #3b5998;
     font-size: 1rem;
+    border: 2px solid #FA016D;
+    outline-color: #28C76F;
 }
+
+
 
 #search form button {
     width: 20%;
@@ -39,6 +43,15 @@ section {
     margin-top: 1rem;
     font-size: 1rem;
     padding: 0.5rem;
+    background-color: #FFA8A8;
+    border-radius: 5px;
+    border: 1px solid #FA016D;
+}
+
+#search form button:hover{
+    background-image: linear-gradient( 174.2deg,  rgba(255,244,228,1) 7.1%, rgba(240,246,238,1) 67.4% );
+    border: 1px solid #28C76F;
+
 }
 
 #results {
@@ -50,16 +63,18 @@ section {
 
 #results .movie {
     width: 200px;
-    height: 200px;
+    height: 220px;
     margin: 0.5rem;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 5px beige;
     text-align: center;
 
 }
 
 #results .movie img {
     width: 100%;
-    height: 80%;
-    border-radius: 10px;
+    height: 70%;
+    border-radius: 5px;
     transition: all 1s ease;
 
 
@@ -75,8 +90,26 @@ section {
     border-radius: 5px;
     background-color: #FA016D;
     padding: 0.1rem;
-    margin-top: 0.1rem;
+    margin-top: 0.5rem;
     display: inline-block;
+}
+
+#results .movie h3{
+    margin-top: 0.5rem;
+
+}
+
+#results .dataNotfound{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#results .dataNotfound img{
+    width: 700px;
+    height: 60vh;
 }
 
 @media screen and (max-width:450px) {
