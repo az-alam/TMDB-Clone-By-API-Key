@@ -14,7 +14,7 @@ form.onsubmit = (e) => {
 
 function displaymovie(moviedata) {
     const resultsdiv = document.querySelector("#results");
-    resultsdiv.innerHTML=""
+    resultsdiv.innerHTML = ""
     if (moviedata.length === 0) {
         const notfounddiv = document.createElement("div");
         notfounddiv.classList.add("dataNotfound");
@@ -74,15 +74,3 @@ function findtrailer(data) {
     if (videoobject === "undefined") return false;
     else return videoobject.key;
 }
-
-
-
-
-
-
-
-
-
-
-
-
